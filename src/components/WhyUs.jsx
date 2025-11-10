@@ -1,44 +1,36 @@
-import { Shield, HeartHandshake, Sparkles } from "lucide-react";
-
-const primary = "#660033";
-
-const features = [
-  {
-    icon: Shield,
-    title: "Legal & Amanah",
-    desc: "Perizinan lengkap, tim berpengalaman, dan dana aman terproteksi.",
-  },
-  {
-    icon: HeartHandshake,
-    title: "Pendampingan Penuh",
-    desc: "Bimbingan ibadah step-by-step mulai manasik hingga kepulangan.",
-  },
-  {
-    icon: Sparkles,
-    title: "Pengalaman Premium",
-    desc: "Hotel dekat masjid, transport nyaman, dan layanan responsif 24/7.",
-  },
-];
+import { ShieldCheck, Clock, Headphones } from "lucide-react";
 
 export default function WhyUs() {
-  return (
-    <section id="why" className="bg-gray-50">
-      <div className="mx-auto max-w-7xl px-6 py-16">
-        <h2 className="text-center text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900">
-          Mengapa Menata Hati?
-        </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-center text-gray-600">
-          Kami merancang perjalanan yang spiritual, modern, dan terpercaya — fokus pada kenyamanan ibadah Anda.
-        </p>
+  const items = [
+    {
+      icon: <ShieldCheck className="text-primary" size={20} />,
+      title: "Legal & Aman",
+      desc: "Izin resmi, administrasi transparan, dan perlindungan asuransi yang jelas.",
+    },
+    {
+      icon: <Clock className="text-primary" size={20} />,
+      title: "Jadwal Fleksibel",
+      desc: "Beragam keberangkatan untuk menyesuaikan waktu terbaik Anda.",
+    },
+    {
+      icon: <Headphones className="text-primary" size={20} />,
+      title: "Pendampingan Penuh",
+      desc: "Tim ramah siap membantu dari persiapan hingga kepulangan.",
+    },
+  ];
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {features.map((f) => (
-            <div key={f.title} className="relative overflow-hidden rounded-3xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl text-white" style={{ backgroundColor: primary }}>
-                <f.icon size={18} />
+  return (
+    <section id="why" className="py-16 bg-accent/40">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900">Kenapa Memilih Kami</h2>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((it) => (
+            <div key={it.title} className="rounded-xl border border-accent/60 bg-white p-6 shadow-sm">
+              <div className="flex items-center gap-3">
+                {it.icon}
+                <h3 className="text-lg font-semibold">{it.title}</h3>
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-gray-900">{f.title}</h3>
-              <p className="mt-1 text-sm text-gray-600">{f.desc}</p>
+              <p className="mt-3 text-slate-600 text-sm leading-relaxed">{it.desc}</p>
             </div>
           ))}
         </div>
