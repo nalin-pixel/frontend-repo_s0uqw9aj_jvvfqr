@@ -14,9 +14,9 @@ export default function App() {
         <Packages />
         <WhyUs />
 
-        <section id="contact" className="py-16">
+        <section id="contact" className="py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-2xl border border-accent/50 bg-accent/30 p-8">
+            <div className="rounded-3xl border border-[#f1e6ec] bg-[#f1e6ec]/50 p-8">
               <h2 className="text-2xl font-semibold">Butuh Bantuan Merencanakan Perjalanan?</h2>
               <p className="mt-2 text-slate-700">
                 Hubungi kami untuk konsultasi paket, ketersediaan, dan promo terbaru.
@@ -26,13 +26,13 @@ export default function App() {
                   href="https://wa.me/6281234567890"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-white shadow hover:shadow-md"
+                  className="inline-flex items-center justify-center rounded-xl bg-[#660033] px-5 py-2.5 text-white shadow hover:shadow-md"
                 >
                   WhatsApp Kami
                 </a>
                 <a
                   href="mailto:cs@menatahati.travel"
-                  className="inline-flex items-center justify-center rounded-lg bg-white px-5 py-2.5 text-primary border border-accent/50"
+                  className="inline-flex items-center justify-center rounded-xl bg-white px-5 py-2.5 text-[#660033] border border-[#f1e6ec]"
                 >
                   Email Layanan
                 </a>
@@ -42,13 +42,13 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="border-t border-accent/40 py-8">
+      <footer className="border-t border-[#f1e6ec] py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-slate-600">
           <p>© {new Date().getFullYear()} Menata Hati Tour & Travel</p>
           <div className="flex items-center gap-4">
-            <a href="#packages" className="hover:text-primary">Paket</a>
-            <a href="#why" className="hover:text-primary">Kenapa Kami</a>
-            <a href="#contact" className="hover:text-primary">Kontak</a>
+            <a href="#packages" className="hover:text-[#660033]">Paket</a>
+            <a href="#why" className="hover:text-[#660033]">Kenapa Kami</a>
+            <a href="#contact" className="hover:text-[#660033]">Kontak</a>
           </div>
         </div>
       </footer>
