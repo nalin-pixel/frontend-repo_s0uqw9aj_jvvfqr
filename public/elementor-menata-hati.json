@@ -1,0 +1,313 @@
+{
+  "template_meta": {
+    "name": "Menata Hati Tour & Travel — Modular Sections",
+    "brand": {
+      "name": "Menata Hati Tour & Travel",
+      "primary_color": "#660033",
+      "accent_color": "#f1e6ec",
+      "text_color": "#0f172a",
+      "muted_text": "#475569",
+      "font_primary": "Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, \"Apple Color Emoji\", \"Segoe UI Emoji\""
+    },
+    "description": "Modular Elementor-ready sections reflecting the React build (Hero 3D, Date Selector, Packages, Why Us) plus expanded tour & travel content blocks (Itinerary, Destinations, Gallery, Testimonials, Booking, FAQ, Contact).",
+    "version": "1.0.0",
+    "notes": "Each section below is self-contained and can be imported individually into Elementor. Map 'elementor_widget' to Elementor core/pro widgets: heading, text-editor, button, image, icon-box, gallery, testimonial, form, tabs, accordion, icon-list, star-rating, counter, video, shortcode, html."
+  },
+  "global_styles": {
+    "container_width": 1140,
+    "section_padding": { "top": 80, "bottom": 80 },
+    "radius": 14,
+    "shadows": {
+      "card": "0 8px 24px rgba(0,0,0,0.06)",
+      "soft": "0 2px 10px rgba(0,0,0,0.05)"
+    },
+    "buttons": {
+      "primary": { "bg": "#660033", "text": "#ffffff" },
+      "secondary": { "bg": "#ffffff", "text": "#660033", "border": "1px solid #660033" }
+    }
+  },
+  "sections": [
+    {
+      "key": "hero_spline",
+      "label": "Hero — 3D Spline + Headline",
+      "elementor_widget": "section",
+      "layout": { "padding_top": 0, "padding_bottom": 0, "full_width": true, "height": 560 },
+      "background": {
+        "type": "html",
+        "html": "<div id=\"spline-hero\" style=\"position:relative;width:100%;height:560px;overflow:hidden;border-bottom-left-radius:24px;border-bottom-right-radius:24px;\"><div id=\"spline-embed\"></div><div style=\"position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.35) 65%,rgba(0,0,0,0.55) 100%);\"></div></div>",
+        "note": "Embed Spline using custom HTML or the Spline iframe."
+      },
+      "content": [
+        {
+          "elementor_widget": "heading",
+          "text": "Menata Hati Tour & Travel",
+          "tag": "h1",
+          "style": { "color": "#ffffff", "size": 56, "weight": 700, "line_height": 1.1 },
+          "position": { "type": "absolute", "top": 120, "left": "50%", "transform": "translateX(-50%)", "max_width": 960, "align": "center" }
+        },
+        {
+          "elementor_widget": "text-editor",
+          "text_html": "<p style=\"color:#e2e8f0;font-size:18px\">Umrah & Haji berkelas, bimbingan penuh, perjalanan yang menenangkan.</p>",
+          "position": { "type": "absolute", "top": 200, "left": "50%", "transform": "translateX(-50%)", "max_width": 720, "align": "center" }
+        },
+        {
+          "elementor_widget": "button",
+          "label": "Konsultasi Gratis",
+          "link": "https://wa.me/6281234567890",
+          "style": { "background": "#660033", "color": "#ffffff", "padding_x": 24, "padding_y": 12, "radius": 999 },
+          "position": { "type": "absolute", "top": 260, "left": "50%", "transform": "translateX(-50%)", "align": "center" }
+        }
+      ]
+    },
+    {
+      "key": "date_selector",
+      "label": "Departure Date Selector",
+      "elementor_widget": "section",
+      "layout": { "padding_top": 48, "padding_bottom": 48 },
+      "content": [
+        { "elementor_widget": "heading", "text": "Jadwal Keberangkatan", "tag": "h2", "style": { "size": 36, "weight": 700, "color": "#0f172a" } },
+        { "elementor_widget": "text-editor", "text_html": "<p>Pilih bulan keberangkatan terbaik Anda dalam 12–14 bulan ke depan.</p>" },
+        {
+          "elementor_widget": "html",
+          "html": "<div class=\"mh-date-grid\" style=\"display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px\"></div>",
+          "note": "Use HTML + JS repeater in Elementor or 6-column Inner Sections with buttons."
+        },
+        {
+          "elementor_widget": "button",
+          "label": "Lihat Paket Sesuai Tanggal",
+          "link": "#packages",
+          "style": { "background": "#660033", "color": "#ffffff", "radius": 999, "padding_x": 24, "padding_y": 12 }
+        }
+      ],
+      "scripts": [
+        "const container = document.querySelector('.mh-date-grid'); if(container){ const now = new Date(); for(let i=0;i<14;i++){ const d = new Date(now.getFullYear(), now.getMonth()+i, 1); const label = d.toLocaleString('id-ID',{month:'long', year:'numeric'}); const btn = document.createElement('button'); btn.textContent = label; btn.style.cssText='padding:12px 14px;border:1px solid #e5e7eb;border-radius:12px;background:#fff;cursor:pointer;font-weight:600;color:#0f172a'; btn.onmouseenter=()=>btn.style.boxShadow='0 8px 24px rgba(0,0,0,0.06)'; btn.onmouseleave=()=>btn.style.boxShadow='none'; btn.onclick=()=>{ document.querySelectorAll('.mh-date-grid button').forEach(b=>{b.style.outline='none'}); btn.style.outline='3px solid #66003340'; sessionStorage.setItem('mh_selected_month', label); }; container.appendChild(btn);} }"
+      ]
+    },
+    {
+      "key": "packages",
+      "label": "Paket Rekomendasi",
+      "elementor_widget": "section",
+      "layout": { "padding_top": 64, "padding_bottom": 64 },
+      "content": [
+        { "elementor_widget": "heading", "text": "Paket Pilihan", "tag": "h2", "style": { "size": 36, "weight": 700 } },
+        { "elementor_widget": "text-editor", "text_html": "<p>Pilih paket sesuai kebutuhan Anda. Semua sudah termasuk pembimbing dan pendampingan lengkap.</p>" },
+        {
+          "elementor_widget": "inner-section",
+          "columns": 3,
+          "items": [
+            {
+              "elementor_widget": "icon-box",
+              "icon": "plane",
+              "title": "Umrah Premium",
+              "description": "Hotel bintang 5, jarak dekat Masjidil Haram & Nabawi, private bus.",
+              "badge": "Paling Populer",
+              "price": "Mulai 38 Jt",
+              "cta": { "label": "Booking Sekarang", "link": "#booking" }
+            },
+            {
+              "elementor_widget": "icon-box",
+              "icon": "star",
+              "title": "Umrah Reguler",
+              "description": "Pilihan hemat dengan fasilitas lengkap dan nyaman.",
+              "price": "Mulai 29 Jt",
+              "cta": { "label": "Lihat Detail", "link": "#booking" }
+            },
+            {
+              "elementor_widget": "icon-box",
+              "icon": "shield",
+              "title": "Haji Plus",
+              "description": "Kuota resmi, bimbingan intensif, manasik berkala.",
+              "price": "Hubungi Kami",
+              "cta": { "label": "Konsultasi", "link": "https://wa.me/6281234567890" }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "why_us",
+      "label": "Mengapa Menata Hati",
+      "elementor_widget": "section",
+      "content": [
+        { "elementor_widget": "heading", "text": "Mengapa Menata Hati?", "tag": "h2" },
+        {
+          "elementor_widget": "inner-section",
+          "columns": 3,
+          "items": [
+            { "elementor_widget": "icon-box", "icon": "shield", "title": "Legal & Amanah", "description": "Perizinan lengkap, transaksi transparan, dana aman." },
+            { "elementor_widget": "icon-box", "icon": "handshake", "title": "Pendampingan Penuh", "description": "Ustadz/ustadzah berpengalaman, bimbingan setiap tahap." },
+            { "elementor_widget": "icon-box", "icon": "sparkles", "title": "Pengalaman Premium", "description": "Rute efektif, konsumsi terjamin, layanan ramah." }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "itinerary",
+      "label": "Itinerary Timeline",
+      "elementor_widget": "section",
+      "content": [
+        { "elementor_widget": "heading", "text": "Rangkaian Perjalanan", "tag": "h2" },
+        {
+          "elementor_widget": "tabs",
+          "tabs": [
+            { "title": "Hari 1", "content_html": "<p>Keberangkatan dari Jakarta, tiba di Madinah, check-in hotel, istirahat.</p>" },
+            { "title": "Hari 2", "content_html": "<p>Ziarah Raudhah, Masjid Nabawi, ibadah dan kajian.</p>" },
+            { "title": "Hari 3", "content_html": "<p>Perjalanan ke Makkah, miqat, umrah pertama.</p>" },
+            { "title": "Hari 4-7", "content_html": "<p>Ibadah di Masjidil Haram, tawaf sunnah, ziarah sekitar.</p>" }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "destinations",
+      "label": "Destinations Grid",
+      "elementor_widget": "section",
+      "content": [
+        { "elementor_widget": "heading", "text": "Destinasi", "tag": "h2" },
+        {
+          "elementor_widget": "gallery",
+          "layout": "masonry",
+          "items": [
+            { "src": "/images/madinah.jpg", "caption": "Madinah" },
+            { "src": "/images/makkah.jpg", "caption": "Makkah" },
+            { "src": "/images/jabal-rahmah.jpg", "caption": "Jabal Rahmah" },
+            { "src": "/images/jabal-uhud.jpg", "caption": "Jabal Uhud" }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "testimonials",
+      "label": "Testimonials",
+      "elementor_widget": "section",
+      "content": [
+        { "elementor_widget": "heading", "text": "Cerita Jamaah", "tag": "h2" },
+        {
+          "elementor_widget": "inner-section",
+          "columns": 3,
+          "items": [
+            { "elementor_widget": "testimonial", "name": "Aisyah", "title": "Umrah Reguler", "photo": "/images/user1.jpg", "content": "Alhamdulillah perjalanan nyaman, pembimbing sabar dan detail." },
+            { "elementor_widget": "testimonial", "name": "Budi", "title": "Umrah Premium", "photo": "/images/user2.jpg", "content": "Hotel dekat, makanan enak, jadwal rapi. Recommended!" },
+            { "elementor_widget": "testimonial", "name": "Rahmat", "title": "Haji Plus", "photo": "/images/user3.jpg", "content": "Proses administrasi jelas dan aman. Bimbingan mantap." }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "gallery",
+      "label": "Gallery Carousel",
+      "elementor_widget": "section",
+      "content": [
+        { "elementor_widget": "heading", "text": "Galeri Perjalanan", "tag": "h2" },
+        {
+          "elementor_widget": "gallery",
+          "layout": "carousel",
+          "items": [
+            { "src": "/images/galeri1.jpg" },
+            { "src": "/images/galeri2.jpg" },
+            { "src": "/images/galeri3.jpg" },
+            { "src": "/images/galeri4.jpg" }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "pricing_table",
+      "label": "Pricing Table (Variant)",
+      "elementor_widget": "section",
+      "content": [
+        { "elementor_widget": "heading", "text": "Perbandingan Paket", "tag": "h2" },
+        {
+          "elementor_widget": "inner-section",
+          "columns": 3,
+          "items": [
+            { "elementor_widget": "pricing", "title": "Reguler", "price": "29 Jt", "features": ["Hotel bintang 4", "Transport AC", "Makan 3x"], "cta": { "label": "Pilih Reguler", "link": "#booking" } },
+            { "elementor_widget": "pricing", "title": "Premium", "price": "38 Jt", "features": ["Hotel bintang 5", "Dekat Haram", "Private Bus"], "cta": { "label": "Pilih Premium", "link": "#booking" }, "highlight": true },
+            { "elementor_widget": "pricing", "title": "Haji Plus", "price": "Hubungi", "features": ["Kuota Resmi", "Bimbingan Intensif", "Manasik"], "cta": { "label": "Konsultasi", "link": "https://wa.me/6281234567890" } }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "booking_form",
+      "label": "Booking & Lead Capture",
+      "elementor_widget": "section",
+      "content": [
+        { "elementor_widget": "heading", "text": "Booking / Konsultasi", "tag": "h2" },
+        {
+          "elementor_widget": "form",
+          "fields": [
+            { "type": "text", "label": "Nama Lengkap", "name": "full_name", "required": true },
+            { "type": "tel", "label": "Nomor WA", "name": "whatsapp", "required": true },
+            { "type": "email", "label": "Email", "name": "email" },
+            { "type": "select", "label": "Paket", "name": "package", "options": ["Umrah Reguler", "Umrah Premium", "Haji Plus"], "required": true },
+            { "type": "text", "label": "Bulan Keberangkatan", "name": "departure_month", "placeholder": "Otomatis terisi dari pilihan tanggal" },
+            { "type": "textarea", "label": "Catatan", "name": "notes" }
+          ],
+          "submit": { "label": "Kirim", "action": "email", "to": "cs@menatahatitravel.id" },
+          "after_submit": {
+            "js": "try{const m=sessionStorage.getItem('mh_selected_month');if(m){const el=document.querySelector('[name=\\"form_fields[departure_month]\\"]'); if(el){el.value=m;}}}catch(e){}"
+          }
+        },
+        {
+          "elementor_widget": "button",
+          "label": "Chat WhatsApp",
+          "link": "https://wa.me/6281234567890",
+          "style": { "background": "#25D366", "color": "#ffffff", "radius": 999 }
+        }
+      ]
+    },
+    {
+      "key": "faq",
+      "label": "FAQ",
+      "elementor_widget": "section",
+      "content": [
+        { "elementor_widget": "heading", "text": "Pertanyaan Umum", "tag": "h2" },
+        {
+          "elementor_widget": "accordion",
+          "items": [
+            { "title": "Apa saja yang termasuk dalam paket?", "content_html": "<p>Tiket PP, hotel, transport, makan, visa umrah/haji, bimbingan, perlengkapan.</p>" },
+            { "title": "Bagaimana proses pendaftaran?", "content_html": "<p>Isi formulir, verifikasi dokumen, pelunasan, manasik, keberangkatan.</p>" },
+            { "title": "Apakah bisa pilih kamar?", "content_html": "<p>Bisa: Quad/Triple/Double — harga menyesuaikan.</p>" }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "badges",
+      "label": "Legal & Partnership Badges",
+      "elementor_widget": "section",
+      "content": [
+        { "elementor_widget": "heading", "text": "Legalitas & Mitra", "tag": "h2" },
+        {
+          "elementor_widget": "inner-section",
+          "columns": 4,
+          "items": [
+            { "elementor_widget": "image", "src": "/images/logo-kemenag.png", "caption": "Izin Kemenag" },
+            { "elementor_widget": "image", "src": "/images/logo-iata.png", "caption": "IATA" },
+            { "elementor_widget": "image", "src": "/images/logo-saudi-visa.png", "caption": "Saudi Visa" },
+            { "elementor_widget": "image", "src": "/images/logo-maskapai.png", "caption": "Maskapai Mitra" }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "contact_footer",
+      "label": "Contact Footer",
+      "elementor_widget": "section",
+      "content": [
+        { "elementor_widget": "heading", "text": "Hubungi Kami", "tag": "h2" },
+        {
+          "elementor_widget": "inner-section",
+          "columns": 3,
+          "items": [
+            { "elementor_widget": "icon-list", "title": "Kantor", "items": ["Jl. Contoh No. 123, Jakarta" , "+62 812-3456-7890", "cs@menatahatitravel.id"] },
+            { "elementor_widget": "icon-list", "title": "Jam Operasional", "items": ["Senin–Jumat: 09.00–17.00", "Sabtu: 09.00–14.00", "Minggu: Tutup"] },
+            { "elementor_widget": "icon-list", "title": "Sosial Media", "items": ["Instagram @menatahatitravel", "Facebook Menata Hati Travel", "YouTube Menata Hati"] }
+          ]
+        },
+        { "elementor_widget": "text-editor", "text_html": "<p style=\"font-size:12px;color:#64748b\">© 2025 Menata Hati Tour & Travel. All rights reserved.</p>" }
+      ]
+    }
+  ]
+}
